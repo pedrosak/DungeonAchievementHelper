@@ -1,0 +1,8 @@
+## Interface: 80000
+## Title: DungeonAchievementHelper
+## Author: Luke Ellis and kPee
+## Version: 0.1
+
+main.lua
+combatFunction.lua
+dungeonInfo.lua
