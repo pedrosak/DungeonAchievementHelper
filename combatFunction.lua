@@ -7,22 +7,7 @@ local events = {}
 -- Function Definitions
 -----------------------
 function events:PLAYER_ENTER_COMBAT(...)
-  local instanceInfo = {}
-  local instanceName, _, _, instanceDifficultyName = GetInstanceInfo()
-  -- Check instance
-  if instanceName == "Siege of Boralus" then
-    if instanceDifficultyName == "Mythic" then
-      -- Check if Stand By Me is completed
-      _, achivementName, _, completed = GetAchievementInfo(12727)
-      if completed then
-        print(achivementName .. " has been completed. Congratulations.")
-      else
-        print(achivementName .. " has NOT been completed.")
-      end
-    else
-      return "Not in Mythic difficulty. Achivements cannot be earned."
-    end
-  end
+  print("Player ENTERED combat")
 end
 
 function events:PLAYER_LEAVE_COMBAT(...)
@@ -38,16 +23,21 @@ function events:UPDATE_INSTANCE_INFO(...)
   for i = 1 , table.getn(dungeonNames) do
     if instanceName == dungeonNames[i] then
       foundDungeon = true
-      print("You are in " .. instanceName)
       break
     end
   end
 
   if foundDungeon then
-    print("You have entered" .. instanceName)
+    print("You have entered " .. instanceName)
+    print(table.maxn(dungeonAchievemnt[instanceName]))
+
+    for value = 1, table.maxn(dungeonAchievemnt[instanceName]) do
+      print(dungeonAchievemnt[instanceName][value])
+    end
   else
     print("I don't know where the fuck you are.")
   end
+
 end
 
 -- Event Handler
