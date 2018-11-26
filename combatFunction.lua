@@ -29,10 +29,8 @@ function events:UPDATE_INSTANCE_INFO(...)
 
   if foundDungeon then
     print("You have entered " .. instanceName)
-    print(table.maxn(dungeonAchievemnt[instanceName]))
-
-    for value = 1, table.maxn(dungeonAchievemnt[instanceName]) do
-      print(dungeonAchievemnt[instanceName][value])
+    for value = 2, table.maxn(dungeonAchievemnt[instanceName]), 2 do
+      print(GetAchievementInfo(dungeonAchievemnt[instanceName][value]))
     end
   else
     print("I don't know where the fuck you are.")
